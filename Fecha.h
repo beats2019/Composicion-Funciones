@@ -12,7 +12,6 @@ public:
      int dia; // 1-31 con base en el mes
      int anio; // cualquier año
 
-     // función utilitaria para comprobar si el dia es apropiado para mes y anio
      int comprobarDia( int ) const;
  }; // fin de la clase Fecha
 

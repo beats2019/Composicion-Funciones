@@ -2,7 +2,7 @@
 #ifndef EMPLEADO_H
  #define EMPLEADO_H
 
- #include "Fecha.h" // incluye la definición de la clase Fecha
+ #include "Fecha.h"
 
  class Empleado
  {
@@ -10,7 +10,7 @@
      Empleado( const char * const, const char * const,
      const Fecha &, const Fecha & );
      void imprimir() const;
-     ~Empleado(); // se proporciona para confirmar el orden de destrucción
+     ~Empleado();
  private:
      char primerNombre[ 25 ];
      char apellidoPaterno[ 25 ];
