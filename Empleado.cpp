@@ -7,54 +7,69 @@ using std::cout;
  using std::strncpy;
 
  #include "Empleado.h"
- #include "Fecha.h"
+
+int Empleado::cuenta = 0;
+int Empleado::getCuenta()
+{
+   return cuenta;
+}
 
 
- /*
-    const char * const --> It is a constant pointer to constant values
 
- */
+Empleado::Empleado( const char * const nombre, const char * const apellido )
+{
+    primerNombre = new char[ strlen(nombre) + 1 ];
+    strcpy( primerNombre, nombre );
 
- Empleado::Empleado( const char * const nombre, const char * const apellido,
- const Fecha &fechaDeNacimiento, const Fecha &fechaDeContratacion )
- : fechaNacimiento( fechaDeNacimiento ), // inicializa fechaNacimiento
- fechaContratacion( fechaDeContratacion ) // inicializa fechaContratacion
- {
-     //Inicializar primerNombre
-     int longitud = strlen( nombre );
-     longitud = ( longitud < 25 ? longitud : 24 );
-     strncpy( primerNombre, nombre, longitud );
-     primerNombre[ longitud ] = '\0';
+    apellidoPaterno = new char[ strlen(apellido) + 1 ];
+    strcpy( apellidoPaterno, apellido );
 
-     //Inicializar apellidoPaterno
-     longitud = strlen( apellido );
-     longitud = ( longitud < 25 ? longitud : 24 );
-     strncpy( apellidoPaterno, apellido, longitud );
-     apellidoPaterno[ longitud ] = '\0';
+    cuenta++;
 
+    cout << "Se llamo al constructor de Empleado para " << primerNombre
+    << "  " << apellidoPaterno << endl;
 
+}
 
 
 
 
-     // imprime objeto Empleado para mostrar cuándo se llama al constructor
-     cout << "Constructor del objeto Empleado: "
-     << primerNombre << ' ' << apellidoPaterno << endl;
- } // fin del constructor de Empleado
-
- // imprime objeto Empleado
- void Empleado::imprimir() const
- {
- cout << apellidoPaterno << ", " << primerNombre << " Contratacion: ";
- fechaContratacion.imprimir();
- cout << " Nacimiento: ";
- fechaNacimiento.imprimir();
- cout << endl;
- } // fin de la función imprimir
-
- // imprime objeto Empleado para mostrar cuándo se llama a su destructor
  Empleado::~Empleado()
  {
- cout << "Destructor del objeto Empleado: "
- << apellidoPaterno << ", " << primerNombre << endl;
- } // fin del constructor ~Empleado
+     cout << "Destructor del objeto Empleado: "
+     << apellidoPaterno << ", " << primerNombre << endl;
+
+     delete [] primerNombre;
+     delete [] apellidoPaterno;
+
+     cuenta--;
+
+ }
+
+ const char *Empleado::getPrimerNombre() const
+ {
+     return primerNombre;
+ }
+
+ const char *Empleado::getApellidoPaterno() const
+ {
+     return apellidoPaterno;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
